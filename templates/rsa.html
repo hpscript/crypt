@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>RSA暗号</h3>
+<p>
+RSA暗号は公開鍵暗号方式で使われる代表的な暗号アルゴリズムで、桁数の大きな素数を掛け合わせた数字の素因数分解が難しいことを応用しています。</p>
+<form action="/rsa" method="POST">
+	<div class="mb-3">
+		<label for="" class="form-label">テキスト</label>
+		<input type="text" class="form-control" id="" name="text" required="required">
+	</div>
+	<button type="submit" class="btn btn-primary">暗号化</button>
+</form>
+{% if encrypted != null %}
+<br><br>
+<h4>秘密鍵・公開鍵</h4>
+<div class="alert alert-success" role="alert">
+	{{ privateKey }}<br>
+	{{ publicKey }}
+</div>
+<h4>RSA暗号データ</h4>
+<div class="alert alert-danger" role="alert">
+	{{ encrypted }}
+</div>
+{% endif %}
+{% endblock %}

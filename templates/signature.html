@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>電子署名</h3>
+<form action="/signature" method="POST">
+	<div class="mb-3">
+		<label for="" class="form-label"><a href="/publickey">秘密鍵・公開鍵</a>で作成した送信者の秘密鍵</label>
+		<input type="text" class="form-control" id="" name="privateKey" required="required">
+	</div>
+	<div class="mb-3">
+		<label for="" class="form-label">受信者のアドレス(公開鍵)</label>
+		<input type="text" class="form-control" id="" name="receiver" value="3eee2b9991f112655af91f12b13503771b842d550356d3794f528927ce7e4fd124cdee9d0d9b1afd0a3d53724cfcad64131f43ff28ef28f1a216523237ecd260" required="required">
+	</div>
+	<div class="mb-3">
+		<label for="" class="form-label">送信コイン</label>
+		<input type="text" class="form-control" id="" name="amount" value="" required="required">
+	</div>
+	<button type="submit" class="btn btn-primary">署名する</button>
+</form>
+{% if signature != null %}
+<h4>未署名のトランザクション</h4>
+<div class="alert alert-success" role="alert">
+	{{ transaction }}
+</div>
+<h4>署名データ</h4>
+<div class="alert alert-danger" role="alert">
+	{{ signature }}
+</div>
+{% endif %}
+{% endblock %}

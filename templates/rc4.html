@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>RC4ストリーム暗号</h3>
+<p>
+RC4は1987年にRon Rivestによって作られた暗号で、2つのパートKSA(Key-scheduling algorithm)とPRGA(Pseudo-randomm algorithm)から構成されています。KSAはランだっむな鍵(40~2566bit)でS=[0, 1, .... N-1]を初期化し、PRGAはそのSを使って擬似乱数を生成します。この生成された疑似乱数と平文のxorを取って暗号化します。</p>
+<form action="/rc4" method="POST">
+	<div class="mb-3">
+		<label for="" class="form-label">テキスト</label>
+		<input type="text" class="form-control" id="" name="text" required="required">
+	</div>
+	<div class="mb-3">
+		<label for="" class="form-label">キー</label>
+		<input type="text" class="form-control" id="" name="key" minlength="8" required="required">
+		<div id="" class="form-text">任意のキーを入力ください。e.g. Very long and confidential key</div>
+	</div>
+	<button type="submit" class="btn btn-primary">暗号化</button>
+</form>
+{% if encrypted != null %}
+<br><br>
+<h4>RC4暗号データ</h4>
+<div class="alert alert-danger" role="alert">
+	{{ encrypted }}
+</div>
+{% endif %}
+{% endblock %}

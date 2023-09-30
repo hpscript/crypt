@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>暗号生成</h3>
+<p>本ページでは主要な暗号技術による暗号化をお手伝い致します。DES、RC4は脆弱性が発見されており、推奨されておりません。</p>
+<ul class="list-group">
+	<li class="list-group-item"><a href="/publickey">秘密鍵・公開鍵の作成</a></li>
+	<li class="list-group-item"><a href="/aes">AES暗号生成</a></li>
+	<li class="list-group-item"><a href="/des">DES暗号生成</a>(※非推奨)</li>
+	<li class="list-group-item"><a href="/rc4">RC4ストリーム暗号生成</a>(※非推奨)</li>
+	<li class="list-group-item"><a href="/rsa">RSA暗号生成</a></li>
+	<li class="list-group-item"><a href="/hash">ハッシュ値生成</a></li>
+	<li class="list-group-item"><a href="/random">擬似乱数生成</a></li>
+	<li class="list-group-item"><a href="/signature">電子署名作成</a></li>
+</ul>
+{% endblock %}

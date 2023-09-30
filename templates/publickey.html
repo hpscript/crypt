@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>秘密鍵・公開鍵の作成</h3>
+<p>ボタンを押下すると、秘密鍵・公開鍵を作成します。暗号計算には「Secp2561k」と呼ばれる楕円曲線を使用します。</p>
+<form action="/publickey" method="POST">
+	<button type="submit" class="btn btn-primary">作成</button>
+</form>
+{% if public_key != null %}
+<br><br>
+<h4>秘密鍵</h4>
+<div class="alert alert-danger" role="alert">
+	{{ secret_key }}
+</div>
+<h4>公開鍵</h4>
+<div class="alert alert-success" role="alert">
+	{{ public_key }}
+</div>
+{% endif %}
+{% endblock %}

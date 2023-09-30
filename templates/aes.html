@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>AES暗号化</h3>
+<p>
+暗号化したいテキストと任意のパスフレーズを入力してボタンを押下すると、ソルトとHMAC/SHA-256ハッシュ関数を50,000 回通してAES暗号化します。</p>
+<form action="/aes" method="POST">
+	<div class="mb-3">
+		<label for="" class="form-label">テキスト</label>
+		<input type="text" class="form-control" id="" name="text" required="required">
+	</div>
+	<div class="mb-3">
+		<label for="" class="form-label">パスフレーズ</label>
+		<input type="text" class="form-control" id="" name="passphrase" required="required">
+		<div id="" class="form-text">任意の3文字以上10文字以内の英数字で入力ください。入力されたパスフレーズを元にPBKDF2を利用しAESキーを生成します。</div>
+	</div>
+	<button type="submit" class="btn btn-primary">AES暗号化</button>
+</form>
+{% if encrypted != null %}
+<br><br>
+<h4>ソルト・IV(初期ベクトル)</h4>
+<div class="alert alert-success" role="alert">
+	{{ salt }}<br>
+	{{ iv }}
+</div>
+<h4>AES暗号データ</h4>
+<div class="alert alert-danger" role="alert">
+	{{ encrypted }}
+</div>
+<p>※複合化には、今回利用したパスフレーズ、ソルト、IV(初期ベクトル)、反復回数(50000)、暗号化された情報が必要です。</p>
+{% endif %}
+{% endblock %}

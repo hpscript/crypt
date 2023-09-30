@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>DES暗号化</h3>
+<p>
+DESは「Data Encryption Standard」の略で、共通鍵暗号方式によるデータ暗号化のアルゴリズムの１つです。暗号化したいテキストと任意のパスフレーズを入力してボタンを押下すると、64bit単位にデータを区切り、それをまとめて暗号化するブロック暗号です。</p>
+<form action="/des" method="POST">
+	<div class="mb-3">
+		<label for="" class="form-label">テキスト</label>
+		<input type="text" class="form-control" id="" name="text" required="required">
+	</div>
+	<button type="submit" class="btn btn-primary">DES暗号化</button>
+</form>
+{% if encrypted != null %}
+<br><br>
+<h4>Key・IV(初期ベクトル)</h4>
+<div class="alert alert-success" role="alert">
+	{{ key }}<br>
+	{{ iv }}
+</div>
+<h4>DES暗号データ</h4>
+<div class="alert alert-danger" role="alert">
+	{{ encrypted }}
+</div>
+{% endif %}
+{% endblock %}

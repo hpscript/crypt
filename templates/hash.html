@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>ハッシュ化</h3>
+<p>ハッシュとは任意のデータから「固定の長さの値」を生み出す仕組みで、通信の暗号化や文章の改竄防止など幅広く使用されています。固定長の値のことをハッシュ値と呼びます。本ページではsha256によりハッシュ化されたダイジェスト値を表示いたします。</p>
+<form action="/hash" method="POST">
+	<div class="mb-3">
+		<label for="" class="form-label">テキスト</label>
+		<input type="text" class="form-control" id="" name="text" required="required">
+	</div>
+	<button type="submit" class="btn btn-primary">ハッシュ値生成</button>
+</form>
+{% if hashed != null %}
+<br><br>
+<h4>ハッシュダイジェスト値</h4>
+<div class="alert alert-danger" role="alert">
+	{{ hashed }}
+</div>
+{% endif %}
+{% endblock %}

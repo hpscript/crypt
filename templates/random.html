@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>疑似乱数生成</h3>
+<p>指定した数字の範囲内で一つの要素を抽出します。例えば、1~10の中で偶数をランダムで抽出したい場合は、2, 10, 2と入力します。</p>
+<form action="/random" method="POST">
+	<div class="mb-3">
+		<label for="" class="form-label">開始</label>
+		<input type="number" class="form-control" id="" name="start" required="required">
+	</div>
+	<div class="mb-3">
+		<label for="" class="form-label">終了</label>
+		<input type="nummber" class="form-control" id="" name="end" required="required">
+	</div>
+	<div class="mb-3">
+		<label for="" class="form-label">刻み値</label>
+		<input type="text" class="form-control" id="" name="step" required="required">
+	</div>
+	<button type="submit" class="btn btn-primary">乱数生成</button>
+</form>
+{% if num != null %}
+<br><br>
+<h4>生成された疑似乱数</h4>
+<div class="alert alert-danger" role="alert">
+	{{ num }}
+</div>
+{% endif %}
+{% endblock %}
